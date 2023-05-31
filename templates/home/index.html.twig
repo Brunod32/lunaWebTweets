@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LunaWeb Tweets{% endblock %}
+
+{% block body %}
+
+    <header>
+        <div class="container col-xxl-8 px-4 py-5">
+            <h1 class="lunaBlue">LunaWeb tweets</h1>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="container col-xxl-8 px-4 py-5">
+
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="https://pbs.twimg.com/profile_images/501671936745684992/n791vf7a_400x400.jpeg" class="d-block mx-lg-auto img-fluid" alt="Logo Lunaweb" width="300" height="100" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <p class="lead">Bienvenue sur l'application de récupération des tweets de l'agence LunaWeb,
+                        concepteurs d"expériences web, et qui place l'humain au coeur de vos projets.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a href="{{ path('app_tweets') }}" role="button" class="btn btn-primary btn-lg px-4 me-md-2">Consulter les Tweets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
