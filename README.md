@@ -12,6 +12,9 @@ DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=10.11.2-Ma
 - Changez app par le nom de la base de données
 
 Lancer la commande ``php bin/console doctrine:database:create`` pour créer la base de données.
+
+### Effectuer les migrations
+Enfin, effectuez les migrations en lançant la commande ``php bin/console doctrine:migration:migrate``
 ***
 
 ## Récupération des tweets
