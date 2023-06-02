@@ -21,6 +21,18 @@ class PublicationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Publications::class);
     }
 
+    //pagination
+    public function findTweetsPagination(int $page = 1, int $limit = 4):array
+    {
+        return $this->findBy([], [], $limit, ($page - 1 ) * 4);
+    }
+
+    public function findTweetsPaginationCount():int
+    {
+        $tweets = $this->findAll();
+        return $this->count([]);
+    }
+
     public function save(Publications $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
