@@ -14,5 +14,6 @@ DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=10.11.2-Ma
 Lancer la commande ``php bin/console doctrine:database:create`` pour créer la base de données.
 ***
 
-
+## Récupération des tweets
+Pour récupérer les tweets, lancez la commande ``php bin/console app:get-tweets`` ou son alias ``php bin/console app:tweets``.
 

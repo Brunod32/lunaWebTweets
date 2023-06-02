@@ -44,7 +44,7 @@ class DataService
 
         $data = $response->toArray();
         print_r($data);
-/*
+
         // Enregistrement des données en BDD
         foreach($data as $item) {
             $source = new Source();
@@ -85,7 +85,7 @@ class DataService
 
         }
         $this->entityManager->flush();
-*/
+
     }
 
 }
