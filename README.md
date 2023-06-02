@@ -4,8 +4,6 @@
 Lancez la commande ``composer install`` pour installer les dépendances nécessaires au projet.  
 ***
 ## Variables d'environnements
-### Création de la base de données
-Lancez la commande ``composer r doctrine`` pour installer l'ORM doctrine.
 
 ### Modification du fichier .env
 1 - Modifiez la ligne suivante pour créer la base de données :  

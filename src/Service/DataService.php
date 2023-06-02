@@ -43,35 +43,9 @@ class DataService
         );
 
         $data = $response->toArray();
-        print_r($data['publications']);
-
-        foreach($data['publications'] as $item) {
-            $donnees = $item['author']['avatar']['large'];
-            print_r($donnees);
-        }
 
         // Enregistrement des données en BDD
         foreach($data['publications'] as $item) {
-            $source = new Source();
-            if(isset($_GET['settings_id'])) {
-                $source->setSettingsId($item['source']['settings_id']);
-                $source->setType($item['source']['type']);
-            }
-
-            $avatar = new Avatar();
-            if(isset($_GET['author']['avatar']['large'])) {
-                $avatar->setLarge($item['author']['avatar']['large']);
-            }
-
-            $author = new Author();
-            if(isset($_GET['author']['avatar_id'])) {
-                $author->setAvatar($item['author']['avatar_id']);
-                $author->setScreenName($item['author']['screen_name']);
-                $author->setFullName($item['author']['full_name']);
-                $author->setuid($item['author']['uid']);
-                $author->setUrl($item['author']['url']);
-            }
-
             $publication = new Publications();
             if($item['type'] === 'twitter') {
                 $publication->setType($item['type']);
