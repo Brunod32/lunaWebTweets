@@ -14,7 +14,34 @@
             </div>
         </div>
     </header>
-    <main>
 
+    <main class="container">
+        <div class="row">
+            {% for tweet in tweets %}
+                <div class="col-lg-3 col-md-7 mt-5">
+                    <div class="col-lg-10">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <img src="{{ tweet.author.avatar.large }}">
+                                    </div>
+                                    <div class="my-auto ms-2">
+                                        <h5 class="card-title"><a href="{{ tweet.author.url }}" target="_blank">{{ tweet.author.full_name }}</a></h5>
+                                        <h6 class="card-subtitle mb-2 text-body-secondary">{{ tweet.publishedAt|date("m/d/Y") }}</h6>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="card-text">{{ tweet.content }}</p>
+                                <a href="{{ tweet.url }}" target="_blank" class="card-link">{{ tweet.url }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
     </main>
+
 {% endblock %}

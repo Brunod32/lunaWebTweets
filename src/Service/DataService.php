@@ -43,32 +43,37 @@ class DataService
         );
 
         $data = $response->toArray();
-        print_r($data);
+        print_r($data['publications']);
+
+        foreach($data['publications'] as $item) {
+            $donnees = $item['author']['avatar']['large'];
+            print_r($donnees);
+        }
 
         // Enregistrement des données en BDD
-        foreach($data as $item) {
+        foreach($data['publications'] as $item) {
             $source = new Source();
             if(isset($_GET['settings_id'])) {
-                $source->setSettingsId($item['settings_id']);
-                $source->setType($item['type']);
+                $source->setSettingsId($item['source']['settings_id']);
+                $source->setType($item['source']['type']);
             }
 
             $avatar = new Avatar();
-            if(isset($_GET['large'])) {    
-                $avatar->setLarge($item['large']);
+            if(isset($_GET['author']['avatar']['large'])) {
+                $avatar->setLarge($item['author']['avatar']['large']);
             }
 
             $author = new Author();
-            if(isset($_GET['avatar_id'])) {
-                $author->setAvatar($item['avatar_id']);
-                $author->setScreenName($item['screen_name']);
-                $author->setFullName($item['full_name']);
-                $author->setuid($item['uid']);
-                $author->setUrl($item['url']);
+            if(isset($_GET['author']['avatar_id'])) {
+                $author->setAvatar($item['author']['avatar_id']);
+                $author->setScreenName($item['author']['screen_name']);
+                $author->setFullName($item['author']['full_name']);
+                $author->setuid($item['author']['uid']);
+                $author->setUrl($item['author']['url']);
             }
 
             $publication = new Publications();
-            if(!empty($_GET['type'])) {
+            if($item['type'] === 'twitter') {
                 $publication->setType($item['type']);
                 $publication->setUid($item['uid']);
                 $publication->setUrl($item['url']);
@@ -77,8 +82,8 @@ class DataService
                 $publication->setContent($item['content']);
                 $publication->setPublishedAt($item['published_at']);
                 $publication->setImages($item['images']);
-                $publication->setSource($item['source_id']);
-                $publication->setAuthor($item['author_id']);
+                $publication->setSource($item['source']);
+                $publication->setAuthor($item['author']);
             }
 
             $this->entityManager->persist($publication);

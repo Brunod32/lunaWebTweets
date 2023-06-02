@@ -32,18 +32,23 @@ class Publications
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $published_at = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $published_at = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $images = [];
 
-    #[ORM\ManyToOne(inversedBy: 'publications')]
-    private ?Source $source = null;
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private ?array $source = [];
 
-    #[ORM\ManyToOne(inversedBy: 'publications')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Author $author = null;
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private ?array $author = [];
+
+    public function __toString(): string
+    {
+//        return $this->id . ' ' . $this->content;
+        return $this->id;
+    }
 
     public function getId(): ?int
     {
@@ -122,12 +127,12 @@ class Publications
         return $this;
     }
 
-    public function getPublishedAt(): ?\DateTimeImmutable
+    public function getPublishedAt(): ?string
     {
         return $this->published_at;
     }
 
-    public function setPublishedAt(\DateTimeImmutable $published_at): self
+    public function setPublishedAt(string $published_at): self
     {
         $this->published_at = $published_at;
 
@@ -146,24 +151,24 @@ class Publications
         return $this;
     }
 
-    public function getSource(): ?Source
+    public function getSource(): array
     {
         return $this->source;
     }
 
-    public function setSource(?Source $source): self
+    public function setSource(?array $source): self
     {
         $this->source = $source;
 
         return $this;
     }
 
-    public function getAuthor(): ?Author
+    public function getAuthor(): array
     {
         return $this->author;
     }
 
-    public function setAuthor(?Author $author): self
+    public function setAuthor(?array $author): self
     {
         $this->author = $author;
 
