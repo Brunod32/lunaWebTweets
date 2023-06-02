@@ -1,7 +1,16 @@
 .lunaBlue {
     color: #0B2DC5;
-    /*border-bottom: solid #0B2DC5;*/
-    /*width: 307px;*/
+}
+
+span {
+    font-weight: bolder;
+    text-decoration: none;
+    background: linear-gradient(to top, rgba(11, 45, 193, 100) 0%, rgba(11, 45, 193, 100) 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
+    transition: background-size .5s;
+}
+
+span:hover {
+    background-size: 100% 100%;
 }
 
 .lead {

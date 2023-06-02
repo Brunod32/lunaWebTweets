@@ -19,7 +19,7 @@
         {% include('pagination.html.twig') %}
         <div class="row">
             {% for tweet in tweets %}
-                <div class="col-lg-3 col-md-7">
+                <div class="col-lg-3 col-md-6">
                     <div class="col-lg-10">
                         <div class="card mb-3">
                             <div class="card-body">
@@ -34,7 +34,10 @@
                                 </div>
                                 <hr>
                                 <p class="card-text">{{ tweet.content }}</p>
-                                <a href="{{ tweet.url }}" target="_blank" class="card-link">{{ tweet.url }}</a>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ tweet.url }}" target="_blank" class="card-link">En voir plus...</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
